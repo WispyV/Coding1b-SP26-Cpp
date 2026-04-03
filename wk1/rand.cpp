@@ -30,8 +30,8 @@ int main() {
 
     // set varibles
         // the random number
-        int RandomRange = (rand() % 11) +  10;
-        int number = (rand() % RandomRange) + 1;
+        int randomRange = (rand() % 11) +  10;
+        int number = (rand() % randomRange) + 1;
 
         // the guess/input
         int guess = -1;
@@ -40,7 +40,7 @@ int main() {
     // start loop
     while(true) {
         // ask for the player's input between 1 and 10 (inclusive) 
-        cout << "I'm thinkg of a number between 1 and 10 " <<RandomRange>> ", can you guess it?\n>>";
+        cout << "I'm thinkg of a number between 1 and " << randomRange << ", can you guess it?\n>>";
         // get the player's guess/input
         cin >> guess;
         totalGuesses++;
