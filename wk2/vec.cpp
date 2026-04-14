@@ -14,13 +14,17 @@ using namespace std;
 int main() {
     cout << "Let's learn about vectors!\n";
 
+    // this vector exists outside of the do-while loop.
+    // so it won't be destoryed every loop.
+    vector<string> favGames = {"Valorant", "Overwatch", "Stray"};
+
     string input;
 
     do {
         cout << "What would you like to do?\n";
-        cout << "You can type 'quit' or 'push' 'find'.\n";
+        cout << "You can type 'quit' or 'push' 'find', 'remove'.\n";
 
-        getline(cin, input);
+        getline(cin, input);  // get input from player
 
         if(input == "push") {
             cout << "\nLet's make our first vector of strings.\n";
@@ -113,6 +117,28 @@ int main() {
         else if(input == "quit") {
             cout << "Thanks for playing.\n";
             break;
+        }
+        else if(input == "remove") {
+            sort(favGames.begin(), favGames.end());
+            cout << "Here are your favorite Games.\n";
+
+            for(int i =0; i < favGames.size(); i++) {
+                cout << favGames[i] << endl;
+            }
+             cout << "What game would you like to remove from the list?\n";
+             getline(cin, input);
+
+             auto iter = find(favGames.begin(), favGames.end(), input);
+
+             int(iter != favGames.end()) {
+                cout << "We've found that name. removing now:\n";
+                favGames.erase(iter);
+             }
+
+             cout << "Here are your favorite Games.\n";
+             for(int i = 0; i < favGames.size(); i++) {
+                cout << favGames[i] << endl;
+             }
         }
         else {
             cout << "I didn't recognise that command.\n";
