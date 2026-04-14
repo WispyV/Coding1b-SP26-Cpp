@@ -27,6 +27,7 @@ int main() {
     cout << "I want to know what your fav games are?\n";
 
     vector<string> favGames = {"Valorant", "Overwatch",  "Stray", "Minecraft", "Marvel Rivels"};
+    vector<string>::iterator iter;
 
     string input;
 
@@ -40,10 +41,7 @@ int main() {
         if(input == "show") {
             cout << "let's find the games that are already inputed in.\n ";
 
-            vector<string> favGames = {"Valorant", "Overwatch",  "Stray", "Minecraft", "Marvel Rivels"};
-
-            vector<string>::iterator iter;
-
+            
             cout << "Here are the favs inputed!\n";
             for(int i = 0; i < favGames.size(); i++) {
                 cout << " " << favGames [i] <<"\n";
@@ -51,30 +49,115 @@ int main() {
 
             iter = favGames.begin();
 
-            cout << "Here " << *iter <<".\n";
 
             iter += 1;
 
-            cout << "Here also " << *iter <<".\n";
 
             cout << "what name would you like to select?\n";
             getline(cin, input);
 
             iter = find(favGames.begin(), favGames.end(), input);
 
-            if // starting on 91 on vec.cpp
+            if(iter != favGames.end()) {
+                cout << "I have found it " << *iter << " !\n";
+                cout << "would you like to change this fav?\n";
+                getline(cin, input);
+                if (input =="yes") {
+                    cout << "what would you like to change it to?\n";
+                    getline(cin, input);
+
+                    *iter = input;
+                }
+                cout << "here are your updated favs!\n";
+                for(int i = 0; i < favGames.size(); i++) {
+                    cout << " " << favGames [i] <<"\n";
+                }
+            }
+            else {
+                cout << "We couldn't find that name.\n";
+            }
+
+        }
+    
+
+        // edit
+        else if(input == "edit") {
+            cout << "what name would you like to select?\n";
+            getline(cin, input);
+
+            iter = favGames.begin();
+
+            iter = find(favGames.begin(), favGames.end(), input);
+
+            if(iter != favGames.end()) {
+                cout << "I have found it" << *iter << "!\n";
+                cout << "would you like to change this fav?\n";
+                getline(cin, input);
+                if (input =="yes") {
+                    cout << "what would you like to change it to?\n";
+                    getline(cin, input);
+
+                    *iter = input;
+                }
+                cout << "here are your updated favs!\n";
+                for(int i = 0; i < favGames.size(); i++) {
+                    cout << " " << favGames [i] <<"\n";
+                }
+            }
+            else {
+                cout << "We couldn't find that name.\n";
+            }
 
         }
 
-        // edit
-
         // remove
-        
+        else if(input == "remove") {
+            sort(favGames.begin(), favGames.end());
+            cout << "Here are your favorite Games.\n";
+
+            for(int i =0; i < favGames.size(); i++) {
+                cout << favGames[i] << endl;
+            }
+             cout << "What game would you like to remove from the list?\n";
+             getline(cin, input);
+
+             auto iter = find(favGames.begin(), favGames.end(), input);
+
+             if(iter != favGames.end()) {
+                cout << "We've found that name. removing now:\n";
+                favGames.erase(iter);
+             }
+
+             cout << "Here are your favorite Games.\n";
+             for(int i = 0; i < favGames.size(); i++) {
+                cout << favGames[i] << endl;
+             }
+        }
+
         // add
+        else if(input == "add") {
+            cout << "What game would you like to add?\n";
+            getline(cin, input);
+
+            favGames.push_back(input);
+
+            cout << "Game added!\n";
+
+            cout << "Here are your updated favorite games:\n";
+            for(int i = 0; i < favGames.size(); i++) {
+                cout << favGames[i] << endl;
+            }
+        }
         
         // quit
+        else if(input == "quit") {
+            cout << "Thanks for playing.\n";
+            break;
+        }
 
-        // don't recognise that command
+        else {
+            cout << "I didn't recognise that command.\n";
+        }
 
 
 

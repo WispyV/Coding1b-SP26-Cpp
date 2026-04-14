@@ -130,7 +130,7 @@ int main() {
 
              auto iter = find(favGames.begin(), favGames.end(), input);
 
-             int(iter != favGames.end()) {
+             if(iter != favGames.end()) {
                 cout << "We've found that name. removing now:\n";
                 favGames.erase(iter);
              }
